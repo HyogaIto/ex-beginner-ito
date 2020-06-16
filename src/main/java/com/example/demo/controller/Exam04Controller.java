@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,12 +25,16 @@ public class Exam04Controller {
 		return "exam04";
 	}
 	
+	
 	@RequestMapping("result")
-	public String result(UserForm userForm,Model model) {
+	public String result(@Validated UserForm userForm,
+			BindingResult bindingResult, Model model) {
+		
+		if(bindingResult.hasErrors()) {
+			return index();
+		}
 		User user=new User();
-		user.setName(userForm.getName());
-		user.setAge(userForm.getAge());
-		user.setComment(userForm.getComment());
+		BeanUtils.copyProperties(userForm, user);
 		model.addAttribute("user",user);
 		return "exam04-result";
 	}

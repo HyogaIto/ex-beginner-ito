@@ -20,11 +20,11 @@ public class Exam03Controller {
 	@RequestMapping("result")
 	public String result(int pro1,int pro2,int pro3) {
 		
-		int totalPrice;
-		int taxIncludePrice;
+//		int totalPrice;
+//		int taxIncludePrice;
 		
-		totalPrice=pro1+pro2+pro3;
-		taxIncludePrice=(int)(totalPrice*1.1);
+		int totalPrice=pro1+pro2+pro3;
+		int taxIncludePrice=(int)(totalPrice*1.1);
 		application.setAttribute("totalPrice", totalPrice);
 		application.setAttribute("taxIncludePrice", taxIncludePrice);
 		

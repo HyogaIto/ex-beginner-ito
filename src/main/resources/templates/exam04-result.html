@@ -6,9 +6,9 @@
 </head>
 <body>
 
-名前：<div th:text="${user.name}"></div>
-年齢：<div th:text="${user.age}"></div>
-コメント：<div th:text="${user.comment}"></div>
+<div th:text="名前：+ ${user.name}"></div>
+<div th:text="年齢：+ ${user.age}"></div>
+<div th:text="コメント：+ ${user.comment}"></div>
 
 </body>
 </html>
